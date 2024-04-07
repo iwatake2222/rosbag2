@@ -150,10 +150,10 @@ TEST_P(ReindexTestFixture, test_multiple_files) {
         target_metadata.topics_with_message_count.end(),
         [&gen_topic](rosbag2_storage::TopicInformation & t) {
           return (t.topic_metadata.name == gen_topic.topic_metadata.name) &&
-          (t.message_count == gen_topic.message_count) &&
-          (t.topic_metadata.offered_qos_profiles ==
-          gen_topic.topic_metadata.offered_qos_profiles) &&
-          (t.topic_metadata.type == gen_topic.topic_metadata.type);
+                 (t.message_count == gen_topic.message_count) &&
+                 (t.topic_metadata.offered_qos_profiles ==
+                 gen_topic.topic_metadata.offered_qos_profiles) &&
+                 (t.topic_metadata.type == gen_topic.topic_metadata.type);
         }
       ) != target_metadata.topics_with_message_count.end()
     );

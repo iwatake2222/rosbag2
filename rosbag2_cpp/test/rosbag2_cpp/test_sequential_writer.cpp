@@ -374,7 +374,7 @@ TEST_F(
     write(An<const std::vector<std::shared_ptr<const rosbag2_storage::SerializedBagMessage>> &>())).
   WillByDefault(
     [this, &written_messages]
-      (const std::vector<std::shared_ptr<const rosbag2_storage::SerializedBagMessage>> & msgs)
+    (const std::vector<std::shared_ptr<const rosbag2_storage::SerializedBagMessage>> & msgs)
     {
       written_messages += msgs.size();
       fake_storage_size_.fetch_add(static_cast<uint32_t>(msgs.size()));
