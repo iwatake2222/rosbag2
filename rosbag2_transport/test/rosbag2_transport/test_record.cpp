@@ -313,8 +313,8 @@ TEST_F(RecordIntegrationTestFixture, mixed_qos_subscribes) {
     [publisher_volatile, publisher_transient_local]() {
       // This test is a success if rosbag2 has connected to both publishers
       return
-        publisher_volatile->get_subscription_count() &&
-        publisher_transient_local->get_subscription_count();
+      publisher_volatile->get_subscription_count() &&
+      publisher_transient_local->get_subscription_count();
     });
   ASSERT_TRUE(succeeded);
 }
@@ -359,10 +359,10 @@ TEST_F(RecordIntegrationTestFixture, duration_and_noncompatibility_policies_mixe
     std::chrono::seconds(5), recorder,
     [publisher_history, publisher_lifespan, publisher_deadline, publisher_liveliness]() {
       return
-        publisher_history->get_subscription_count() &&
-        publisher_lifespan->get_subscription_count() &&
-        publisher_deadline->get_subscription_count() &&
-        publisher_liveliness->get_subscription_count();
+      publisher_history->get_subscription_count() &&
+      publisher_lifespan->get_subscription_count() &&
+      publisher_deadline->get_subscription_count() &&
+      publisher_liveliness->get_subscription_count();
     });
   ASSERT_TRUE(succeeded);
 }
