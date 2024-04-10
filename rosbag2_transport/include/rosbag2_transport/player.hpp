@@ -123,6 +123,10 @@ public:
   ROSBAG2_TRANSPORT_PUBLIC
   virtual bool set_rate(double);
 
+/// Freeze if time running, resume if freezed.
+  ROSBAG2_TRANSPORT_PUBLIC
+  void toggle_freezed();
+
   /// \brief Playing next message from queue when in pause.
   /// \details This is blocking call and it will wait until next available message will be
   /// published or rclcpp context shut down.
@@ -229,6 +233,8 @@ private:
     skip_message_in_main_play_loop_mutex_) = false;
 
   rcutils_time_point_value_t starting_time_;
+
+  bool is_freezed_{false};
 
   // control services
   rclcpp::Service<rosbag2_interfaces::srv::Pause>::SharedPtr srv_pause_;

@@ -299,6 +299,12 @@ bool Player::set_rate(double rate)
   return ok;
 }
 
+void Player::toggle_freezed()
+{
+  is_freezed_ = !is_freezed_;
+}
+
+
 rosbag2_storage::SerializedBagMessageSharedPtr Player::peek_next_message_from_queue()
 {
   rosbag2_storage::SerializedBagMessageSharedPtr * message_ptr_ptr = message_queue_.peek();
@@ -478,8 +484,10 @@ void Player::play_messages_from_queue()
       }
       publish_message(message_ptr);
     }
-    message_queue_.pop();
-    message_ptr = peek_next_message_from_queue();
+    if (!is_freezed_) {
+      message_queue_.pop();
+      message_ptr = peek_next_message_from_queue();
+    }
   }
   // while we're in pause state, make sure we don't return
   // if we happen to be at the end of queue
@@ -644,6 +652,11 @@ void Player::add_keyboard_callbacks()
     play_options_.decrease_rate_key,
     [this]() {set_rate(get_rate() - 0.1);},
     "Decrease Rate 10%"
+  );
+  add_key_callback(
+    play_options_.freeze_resume_toggle_key,
+    [this]() {toggle_freezed();},
+    "Freeze/Resume"
   );
 }
 

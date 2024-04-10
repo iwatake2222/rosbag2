@@ -62,6 +62,7 @@ public:
   KeyboardHandler::KeyCode play_next_key = KeyboardHandler::KeyCode::CURSOR_RIGHT;
   KeyboardHandler::KeyCode increase_rate_key = KeyboardHandler::KeyCode::CURSOR_UP;
   KeyboardHandler::KeyCode decrease_rate_key = KeyboardHandler::KeyCode::CURSOR_DOWN;
+  KeyboardHandler::KeyCode freeze_resume_toggle_key = KeyboardHandler::KeyCode::F;
 
   // Timeout for waiting for all published messages to be acknowledged.
   // Negative value means that published messages do not need to be acknowledged.
